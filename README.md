@@ -13,3 +13,7 @@ The application is implemented using Java programming language and utilizes the 
 - **List Model**: A `DefaultListModel` is used to manage the list of tasks displayed in the GUI.
 - **JFrame**: The `TaskManagement` class extends `JFrame` to create the main application window.
 
+Achieved Insights
+- **Graphical User Interface**: By leveraging Java's Swing framework, the application provides a user-friendly interface for managing tasks, enhancing user experience and usability.
+- **Event Handling**: Through event handling mechanisms, the application responds to user interactions in real-time, ensuring smooth and intuitive task management.
+- **Task Management Logic**: The implementation of task management logic, including functionalities like adding, editing, and deleting tasks, demonstrates fundamental programming concepts such as object-oriented design and data manipulation.
