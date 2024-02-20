@@ -5,3 +5,11 @@
 ## Goal
 The goal of this Java application is to provide a simple task management system with basic functionalities such as adding, editing, and deleting tasks. The application features a graphical user interface (GUI) built using Java Swing components, allowing users to interact with tasks in a visually intuitive way.
 
+## Implementation
+The application is implemented using Java programming language and utilizes the following components:
+- **Swing Framework**: Java's Swing framework is used to create the graphical user interface, including buttons, text fields, and lists.
+- **Event Handling**: Event listeners are employed to handle user interactions such as mouse clicks and button presses.
+- **Task Class**: A custom `Task` class is defined to represent individual tasks, containing attributes such as title and completion status.
+- **List Model**: A `DefaultListModel` is used to manage the list of tasks displayed in the GUI.
+- **JFrame**: The `TaskManagement` class extends `JFrame` to create the main application window.
+
