@@ -1,9 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +49,7 @@ public class TaskManagementGUI extends JFrame {
         listModel = new DefaultListModel<>();
 
         setTitle("Task Management Application");
-        setSize(600, 400);
+        setSize(800, 600); // increased size for better usability
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -64,74 +61,47 @@ public class TaskManagementGUI extends JFrame {
     private void initComponents() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // increased border
 
         JLabel titleLabel = new JLabel("Task Management");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 36)); // increased font size
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         taskField = new JTextField();
-        taskField.setFont(new Font("Arial", Font.PLAIN, 16));
+        taskField.setFont(new Font("Arial", Font.PLAIN, 20)); // increased font size
 
         addButton = new JButton("Add Task");
-        addButton.setFont(new Font("Arial", Font.BOLD, 16));
+        addButton.setFont(new Font("Arial", Font.BOLD, 20)); // increased font size
 
         editButton = new JButton("Edit Task");
-        editButton.setFont(new Font("Arial", Font.BOLD, 16));
+        editButton.setFont(new Font("Arial", Font.BOLD, 20)); // increased font size
         editButton.setEnabled(false);
 
         deleteButton = new JButton("Delete Task");
-        deleteButton.setFont(new Font("Arial", Font.BOLD, 16));
+        deleteButton.setFont(new Font("Arial", Font.BOLD, 20)); // increased font size
         deleteButton.setEnabled(false);
 
         taskList = new JList<>(listModel);
-        taskList.setFont(new Font("Arial", Font.PLAIN, 16));
+        taskList.setFont(new Font("Arial", Font.PLAIN, 20)); // increased font size
         taskList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        taskList.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 1) {
-                    int selectedIndex = taskList.getSelectedIndex();
-                    if (selectedIndex != -1) {
-                        enableEditAndDeleteButtons();
-                    }
-                }
-            }
-        });
 
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                addTask();
-            }
-        });
-
-        editButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                editTask();
-            }
-        });
-
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                deleteTask();
-            }
-        });
+        // Using Lambda expressions for ActionListeners
+        addButton.addActionListener(e -> addTask());
+        editButton.addActionListener(e -> editTask());
+        deleteButton.addActionListener(e -> deleteTask());
 
         panel.add(titleLabel, BorderLayout.NORTH);
         panel.add(taskField, BorderLayout.CENTER);
         panel.add(addButton, BorderLayout.EAST);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10)); // increased horizontal gap
         buttonPanel.add(editButton);
         buttonPanel.add(deleteButton);
 
         JPanel listPanel = new JPanel();
         listPanel.setLayout(new BorderLayout());
-        listPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        listPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         listPanel.add(new JScrollPane(taskList), BorderLayout.CENTER);
         listPanel.add(buttonPanel, BorderLayout.SOUTH);
 
@@ -179,11 +149,6 @@ public class TaskManagementGUI extends JFrame {
         }
     }
 
-    private void enableEditAndDeleteButtons() {
-        editButton.setEnabled(true);
-        deleteButton.setEnabled(true);
-    }
-
     private void disableEditAndDeleteButtons() {
         editButton.setEnabled(false);
         deleteButton.setEnabled(false);
@@ -195,6 +160,6 @@ public class TaskManagementGUI extends JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
-        SwingUtilities.invokeLater(() -> new TaskManagementGUI());
+        SwingUtilities.invokeLater(TaskManagementGUI::new);
     }
 }
